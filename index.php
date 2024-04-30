@@ -42,7 +42,7 @@ $nome = $_GET['nome'];
 $mail = $_GET['mail'];
 $age = $_GET['age'];
 
-if (empty($nome)) {
+if (!empty($_GET['nome']) && !empty($_GET['mail']) && !empty($_GET['age'])) {
     echo 'Inserisci i tuoi dati';
 } else {
     if (strlen($nome) > 3 && str_contains($mail, '@') && str_contains($mail, '.') && is_numeric($age)) {
@@ -98,6 +98,17 @@ foreach ($posts as $postDate) {
             echo '<div class="m-2">' . $date . '</div>';
         }
     }
+}
+
+$arrayRandom = [];
+while(count($arrayRandom) < 15){
+    $numRandom = rand(1, 100);
+    if(!in_array($numRandom, $arrayRandom)){
+        $arrayRandom[] = $numRandom;
+    }
+}
+foreach($arrayRandom as $random){
+    echo '<div>'.$random.'</div>';
 }
 ?>
 
