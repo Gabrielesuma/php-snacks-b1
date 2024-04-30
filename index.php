@@ -34,6 +34,21 @@
 
     foreach($teams as $team){
         echo '<div>'.$team['home'].' - '.$team['away'].' | '.$team['pointsHome'].'-'.$team['pointsAway'].'</div>';
+    };
+
+    //var_dump($_GET);
+    $nome = $_GET['nome'];
+    $mail = $_GET['mail'];
+    $age = $_GET['age'];
+
+    if(empty($nome)){
+        echo 'Inserisci i tuoi dati';
+    } else{
+        if(strlen($nome) > 3 && str_contains($mail, '@') && str_contains($mail, '.') && is_numeric($age)){
+            echo 'Accesso riuscito';
+        } else {
+            echo 'Accesso negato';
+        }
     }
 ?>
 
@@ -45,6 +60,11 @@
     <title>PHP Snack 1</title>
 </head>
 <body>
-    
+    <form action="index.php" method="GET">
+        <input type="text" name="nome">
+        <input type="text" name="mail">
+        <input type="text" name="age">
+        <button type="submit">Invia</button>
+    </form>
 </body>
 </html>
